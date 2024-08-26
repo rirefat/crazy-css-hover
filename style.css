@@ -1,0 +1,62 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #303030;
+}
+
+img {
+    width: 6%;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.list img {
+    cursor: pointer;
+    transition: 0.4s;
+    filter: brightness(0.05);
+    border: 0.5px solid #30303093;
+}
+
+.list img:hover {
+    filter: brightness(1);
+    transform: translateZ(200px);
+}
+
+.list img:hover+* {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(40deg);
+}
+
+.list img:hover+*+* {
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);
+}
+
+.list img:hover+*+*+* {
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(10deg);
+}
+
+.list img:has(+ *:hover) {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+
+.list img:has(+ * + *:hover) {
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);
+}
+
+.list img:has(+ * + * + *:hover) {
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(-10deg);
+}
